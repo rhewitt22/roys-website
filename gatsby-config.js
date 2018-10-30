@@ -1,6 +1,11 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: 'Roy Hewitt, Web Developer',
+    twitter: 'r0yhewitt',
+    instagram: 'r0yhewitt',
+    github: 'rhewitt22',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -27,10 +32,33 @@ module.exports = {
     },
     'gatsby-plugin-offline',
     'gatsby-transformer-json',
+    `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `./src/data/`,
+        name: `data`,
+        path: `${__dirname}/src/data`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [`gatsby-remark-smartypants`, `gatsby-remark-a11y-emoji`],
+      },
+    },
+    {
+      resolve: 'gatsby-source-untappd',
+      options: {
+        id: process.env.UNTAPPD_CLIENT_ID,
+        secret: process.env.UNTAPPD_CLIENT_SECRET,
+      },
+    },
+    {
+      resolve: 'gatsby-source-strava',
+      options: {
+        id: process.env.STRAVA_CLIENT_ID,
+        secret: process.env.STRAVA_CLIENT_SECRET,
+        refresh_token: process.env.STRAVA_REFRESH_TOKEN,
       },
     },
   ],
