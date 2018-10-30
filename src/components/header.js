@@ -1,6 +1,14 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
+const links = ['About', 'Beers', 'Courses', 'Exercise']
+
+const generateLink = name => (
+  <li key={name.toLowerCase()}>
+    <Link to={name.toLowerCase()}>{name}</Link>
+  </li>
+)
+
 const Header = ({ siteTitle }) => (
   <div
     style={{
@@ -26,6 +34,9 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
+      <nav>
+        <ul>{links.map(generateLink)}</ul>
+      </nav>
     </div>
   </div>
 )
