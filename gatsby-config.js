@@ -31,7 +31,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
-    'gatsby-transformer-json',
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -43,7 +42,7 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: [`gatsby-remark-smartypants`, `gatsby-remark-a11y-emoji`],
+        plugins: [`gatsby-remark-a11y-emoji`, `gatsby-remark-smartypants`],
       },
     },
     {
